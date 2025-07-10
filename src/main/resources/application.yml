@@ -1,1 +1,5 @@
-
+spring:
+  application:
+    name: ChatAI
+server:
+  port: 18080
