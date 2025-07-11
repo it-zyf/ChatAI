@@ -75,4 +75,12 @@ public class ChatAIServiceTest {
     }
 
 
+    @Test
+    void chatWithTools() {
+        String result = chatAIService.chatMemory("有哪些常见的计算机网络面试题？");
+        System.out.println(result);
+    }
+
+
+
 }

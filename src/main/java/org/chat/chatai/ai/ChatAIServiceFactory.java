@@ -6,6 +6,7 @@ import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import org.chat.chatai.service.ChatAIService;
+import org.chat.chatai.tools.InterviewQuestionTool;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -32,7 +33,8 @@ public class ChatAIServiceFactory {
                 .chatModel(qwenChatModel)
                 .chatMemory(memory) //会话记忆
                 .chatMemoryProvider(memoryId -> MessageWindowChatMemory.withMaxMessages(10)) //根据memoryId分组会话记忆
-                .contentRetriever(contentRetriever)
+                .contentRetriever(contentRetriever) //rag增强
+                .tools(new InterviewQuestionTool()) // 工具调用
                 .build();
     }
 }
