@@ -41,4 +41,28 @@ public class ChatAIServiceTest {
         System.out.println(result3);
     }
 
+    @Test
+    public void chatTranslate(){
+        //基础版本
+        ChatAIService.Report report = chatAIService.chatTranslate("你好我叫张三,我会 1.打篮球，2.打羽毛球，3.打乒乓球");
+        System.out.println(report);
+        //如果基础版本不理想，可以在请求的时候就设置参数
+//        ResponseFormat responseFormat = ResponseFormat.builder()
+//                .type(JSON)
+//                .jsonSchema(JsonSchema.builder()
+//                        .name("Person")
+//                        .rootElement(JsonObjectSchema.builder()
+//                                .addStringProperty("name")
+//                                .addIntegerProperty("age")
+//                                .addNumberProperty("height")
+//                                .addBooleanProperty("married")
+//                                .required("name", "age", "height", "married")
+//                                .build())
+//                        .build())
+//                .build();
+//        ChatRequest chatRequest = ChatRequest.builder()
+//                .responseFormat(responseFormat)
+//                .messages(UserMessage.from("123"))
+//                .build();
+    }
 }

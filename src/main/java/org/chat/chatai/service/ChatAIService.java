@@ -4,6 +4,8 @@ import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 
+import java.util.List;
+
 /**
  * @author zyf
  * @date 2025/7/11 13:48
@@ -33,4 +35,14 @@ public interface ChatAIService {
      * @return AI回复
      */
     String chatMemoryId(@MemoryId String memoryId, @UserMessage String userMessage);
+
+    /**
+     * 结构化输出
+     *
+     */
+    @SystemMessage(fromResource = "system-prompt.txt")
+    Report chatTranslate(String userMassage);
+
+    record Report(String name, List<String> suggestions) {}
+
 }

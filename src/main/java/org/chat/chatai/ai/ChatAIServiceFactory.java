@@ -25,7 +25,7 @@ public class ChatAIServiceFactory {
 //        return AiServices.create(ChatAIService.class,qwenChatModel);
         return AiServices.builder(ChatAIService.class)
                 .chatModel(qwenChatModel)
-//                .chatMemory(memory) //会话记忆
+                .chatMemory(memory) //会话记忆
                 .chatMemoryProvider(memoryId->MessageWindowChatMemory.withMaxMessages(10)) //根据memoryId分组会话记忆
                 .build();
     }
