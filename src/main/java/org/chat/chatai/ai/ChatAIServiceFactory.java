@@ -2,6 +2,7 @@ package org.chat.chatai.ai;
 
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
 import org.chat.chatai.service.ChatAIService;
@@ -18,6 +19,10 @@ public class ChatAIServiceFactory {
     @Resource
     private ChatModel qwenChatModel;
 
+    @Resource
+    private ContentRetriever contentRetriever;
+
+
     @Bean
     public ChatAIService chatAIService() {
         //设置会话10条
@@ -26,7 +31,8 @@ public class ChatAIServiceFactory {
         return AiServices.builder(ChatAIService.class)
                 .chatModel(qwenChatModel)
                 .chatMemory(memory) //会话记忆
-                .chatMemoryProvider(memoryId->MessageWindowChatMemory.withMaxMessages(10)) //根据memoryId分组会话记忆
+                .chatMemoryProvider(memoryId -> MessageWindowChatMemory.withMaxMessages(10)) //根据memoryId分组会话记忆
+                .contentRetriever(contentRetriever)
                 .build();
     }
 }

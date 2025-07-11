@@ -1,5 +1,6 @@
 package org.chat.chatai;
 
+import dev.langchain4j.service.Result;
 import jakarta.annotation.Resource;
 import org.chat.chatai.service.ChatAIService;
 import org.junit.jupiter.api.Test;
@@ -65,4 +66,13 @@ public class ChatAIServiceTest {
 //                .messages(UserMessage.from("123"))
 //                .build();
     }
+
+    @Test
+    void chatWithRag() {
+        Result<String> result = chatAIService.chatWithRag("怎么学习 Java？有哪些常见面试题？");
+        System.out.println(result.content());
+        System.out.println(result.sources());
+    }
+
+
 }

@@ -10,3 +10,6 @@ langchain4j:
       chat-model:
         api-key: ur key
         model-name: qwen-max
+      embedding-model:
+        api-key: ur key
+        model-name: text-embedding-v4
