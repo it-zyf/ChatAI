@@ -13,5 +13,8 @@ langchain4j:
       embedding-model:
         api-key: ur key
         model-name: text-embedding-v4
+      streaming-chat-model:
+        api-key: ur key
+        model-name: qwen-max
 bigmodel:
   api-key: ur key
