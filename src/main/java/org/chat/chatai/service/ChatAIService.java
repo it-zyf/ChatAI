@@ -6,6 +6,7 @@ import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
 import dev.langchain4j.service.guardrail.InputGuardrails;
 import org.chat.chatai.guardrail.SafeInputGuardrail;
+import reactor.core.publisher.Flux;
 
 import java.util.List;
 
@@ -58,6 +59,15 @@ public interface ChatAIService {
      * 中新增方法，在原本的返回类型外封؜装一层 Result 类，就可以获得封装后结果，从中能够获取到 RAG 引用的源文档、؜以及 Token 的消耗情况
      */
     Result<String> chatWithRag(String userMessage);
+
+
+    /**
+     * 流式回答
+     * @param memoryId 用户id
+     * @param userMessage 用户信息
+     * @return AI回复
+     */
+    Flux<String> chatStream(@MemoryId int memoryId, @UserMessage String userMessage);
 
 
 }

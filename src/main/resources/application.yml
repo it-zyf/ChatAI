@@ -3,7 +3,10 @@ spring:
     name: ChatAI
 server:
   port: 18080
+  servlet:
+    context-path: /api
 # 大模型配置，指定模型
+# https://bailian.console.aliyun.com/?utm_content=se_1021226623&tab=model#/api-key
 langchain4j:
   community:
     dashscope:
@@ -16,5 +19,6 @@ langchain4j:
       streaming-chat-model:
         api-key: ur key
         model-name: qwen-max
+# https://www.bigmodel.cn/usercenter/proj-mgmt/apikeys
 bigmodel:
   api-key: ur key

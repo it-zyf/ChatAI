@@ -3,6 +3,7 @@ package org.chat.chatai.ai;
 import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
@@ -27,6 +28,9 @@ public class ChatAIServiceFactory {
     @Resource
     private McpToolProvider mcpToolProvider;
 
+    @Resource
+    private StreamingChatModel streamingChatModel;
+
 
     @Bean
     public ChatAIService chatAIService() {
@@ -35,6 +39,7 @@ public class ChatAIServiceFactory {
 //        return AiServices.create(ChatAIService.class,qwenChatModel);
         return AiServices.builder(ChatAIService.class)
                 .chatModel(qwenChatModel)
+                .streamingChatModel(streamingChatModel)
                 .chatMemory(memory) //会话记忆
                 .chatMemoryProvider(memoryId -> MessageWindowChatMemory.withMaxMessages(10)) //根据memoryId分组会话记忆
                 .contentRetriever(contentRetriever) //rag增强
