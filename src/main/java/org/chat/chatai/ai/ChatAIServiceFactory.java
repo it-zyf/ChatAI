@@ -1,5 +1,6 @@
 package org.chat.chatai.ai;
 
+import dev.langchain4j.mcp.McpToolProvider;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
@@ -23,6 +24,9 @@ public class ChatAIServiceFactory {
     @Resource
     private ContentRetriever contentRetriever;
 
+    @Resource
+    private McpToolProvider mcpToolProvider;
+
 
     @Bean
     public ChatAIService chatAIService() {
@@ -35,6 +39,7 @@ public class ChatAIServiceFactory {
                 .chatMemoryProvider(memoryId -> MessageWindowChatMemory.withMaxMessages(10)) //根据memoryId分组会话记忆
                 .contentRetriever(contentRetriever) //rag增强
                 .tools(new InterviewQuestionTool()) // 工具调用
+                .toolProvider(mcpToolProvider) //mcp 调用别人封装好的工具
                 .build();
     }
 }

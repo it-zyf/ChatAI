@@ -82,5 +82,11 @@ public class ChatAIServiceTest {
     }
 
 
+    @Test
+    void chatWithMcp() {
+        String result = chatAIService.chatMemory("什么是编程导航？");
+        System.out.println(result);
+    }
+
 
 }
