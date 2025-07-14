@@ -4,6 +4,8 @@ import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
 import dev.langchain4j.service.UserMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
+import org.chat.chatai.guardrail.SafeInputGuardrail;
 
 import java.util.List;
 
@@ -12,6 +14,7 @@ import java.util.List;
  * @date 2025/7/11 13:48
  */
 //@AiService 注解创建为一个服务
+@InputGuardrails({SafeInputGuardrail.class})
 public interface ChatAIService {
     /**
      * 系统预设

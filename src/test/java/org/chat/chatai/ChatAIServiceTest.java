@@ -89,4 +89,12 @@ public class ChatAIServiceTest {
     }
 
 
+    @Test
+    void chatWithGuardrail() {
+        String result = chatAIService.chatMemory("kill the game");
+        System.out.println(result);
+    }
+
+
+
 }
